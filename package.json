@@ -1,0 +1,30 @@
+{
+  "name": "project4",
+  "version": "1.0.0",
+  "description": "Express Js Client Server Web App",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "create_db":"psql -U postgres -f sql/create_db.sql",
+    "create_table": "psql -U postgres -d project4 -f sql/create_table.sql",
+    "seed_table": " psql -U postgres -d project4 -f sql/seed_table.sql",
+    "setup_db":"npm run create_db && npm run create_table && npm run seed_table"
+  },
+
+  "repository": {
+    "type": "git",
+    "url": "git init"
+  },
+  "author": "Raj G",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "pg-promise": "^10.11.1"
+  }
+}
