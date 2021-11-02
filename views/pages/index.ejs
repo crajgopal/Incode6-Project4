@@ -12,17 +12,25 @@
 
     <main>
       <h1>Schedule Management App</h1>  
+
+     
+     
       <div class = "form">	
           
-        <form action="/schedules" method="post">
-            <h3>Existing Users Login </h3>  
+        <form  method="POST" action="/schedules" >
+          <h3>Existing Users Login </h3>  
 
-        User Email:<br>
-        <input type="text" name="useremail" placeholder="User Email" required><br><br>
+         Email:<br>
+        <input id="email" type="email" name="email" placeholder ="User Email" required>
+        <br><br>
         Password:<br>
         <input type="password" name="password" placeholder="Password" required><br><br>
         <!-- submit button -->
-        <input type="submit" value="login">
+        <a href ="/forgotpassword"> Forgot Password?</a><br><br>
+        
+        <input type="submit" value="  login   "> <br><br>
+       <b> <a href ="/new-user"> New User</a></b>
+
       </form>
   
     </div>

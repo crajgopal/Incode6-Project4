@@ -5,14 +5,13 @@
   "main": "index.js",
   "scripts": {
     "start": "node index",
-    "dev": "nodemon index",
+    "dev": "nodemon -r dotenv/config index",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "create_db":"psql -U postgres -f sql/create_db.sql",
+    "create_db": "psql -U postgres -f sql/create_db.sql",
     "create_table": "psql -U postgres -d project4 -f sql/create_table.sql",
     "seed_table": " psql -U postgres -d project4 -f sql/seed_table.sql",
-    "setup_db":"npm run create_db && npm run create_table && npm run seed_table"
+    "setup_db": "npm run create_db && npm run create_table && npm run seed_table"
   },
-
   "repository": {
     "type": "git",
     "url": "git init"
@@ -21,10 +20,19 @@
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
+    "dotenv": "^10.0.0",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
+    "express-flash": "^0.0.2",
+    "express-flash-message": "^2.1.0",
+    "express-session": "^1.17.2",
     "morgan": "^1.10.0",
+    "pg": "^8.7.1",
     "pg-promise": "^10.11.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.14"
   }
 }

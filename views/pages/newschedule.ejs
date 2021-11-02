@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> Schedule Management App</title>
+     <link rel="stylesheet " href ="/styles.css">
+  </head>
+  <body>
+    <%- include('../partials/header') %>
+    <main>
+    <form method="POST" action="/schedules" >
+      <div>
+        <label for="user_id">User_Id: </label>&nbsp;&nbsp;&nbsp;&nbsp;
+        <input id="username" type="text" name="user_id" required>
+     </div>
+
+      <div>
+        <label for="Day">Day &nbsp;&nbsp;&nbsp;&nbsp;
+          :</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input id="day" type="text" name="day" required>
+        </div>
+
+      <div>
+        <label for="starttime"> Start Time       :</label>
+        <input id="start_at" type="text" name="start_at" placeholder="HH:MM" required>
+         </div>
+
+      <div>
+        <label for="endtime">End Time  :</label>&nbsp;
+        <input id="end_at" type="text" name="end_at" placeholder="HH:MM" required>
+ 
+      </div>
+
+      <button type="submit">Add Schedule</button>
+    </form>
+  </main>
+      
+   <%- include('../partials/footer') %>
+</body>
+
+</html> 
