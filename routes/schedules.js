@@ -280,9 +280,10 @@ router.post('/delschedule',redirectLogin,(req, res)=>{
 
 
   const message ="Deleted schedule for user with id "+ user_id +" for day "+day
-  db.any('DELETE FROM schedules WHERE user_id =$1 ',[user_id])
- // db.any("SELECT *, TO_CHAR(start_time,'HH12:MI AM')start_time ,TO_CHAR(end_time,'HH12:MI AM')end_time FROM schedules WHERE user_id =$1, day=$2",[user_id,day])
-  .then((schedules)=>{
+  
+  db.any('DELETE FROM schedules WHERE user_id = $1 AND day = $2',[user_id,day])
+  //db.any("SELECT *, TO_CHAR(start_time,'HH12:MI AM')start_time ,TO_CHAR(end_time,'HH12:MI AM')end_time FROM schedules WHERE user_id = $1 AND day = $2",[user_id,day])
+   .then((schedules)=>{
     console.log(message)
 
         res.redirect('/schedules/newschedule')
