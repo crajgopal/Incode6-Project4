@@ -8,7 +8,46 @@
   <body>
     <%- include('../partials/header') %>
     <main>
-    <form method="POST" action="/schedules" >
+
+      <div> 
+        
+          
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>User ID</th>
+            <th>User</th>
+            <th>Day</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for (let i = 0; i < schedules.length; i++) { %>
+            <tr> 
+              <td> <%= schedules[i].user_id %></td>
+              <td><%= users[(schedules[i].user_id -1)].firstname%></td>
+              <% for (let j = 1; j < days.length+1; j++) { %>
+                <% if((schedules[i].day)==j) {%>
+              <td><%= days[j-1] %></td>
+             
+              <% } %>
+              <% } %>
+              <td><%= schedules[i].start_time %></td>
+              <td><%= schedules[i].end_time %></td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+      <br><br>
+  
+
+
+
+
+    <form method="POST" action="/schedules/newschedule" >
       <div>
         <label for="user_id">User_Id: </label>&nbsp;&nbsp;&nbsp;&nbsp;
         <input id="username" type="text" name="user_id" required>
@@ -21,18 +60,38 @@
         </div>
 
       <div>
-        <label for="starttime"> Start Time       :</label>
-        <input id="start_at" type="text" name="start_at" placeholder="HH:MM" required>
+        <label for="start_time"> Start Time       :</label>
+        <input id="start_time" type="text" name="start_time" placeholder="HH:MM" required>
          </div>
 
       <div>
-        <label for="endtime">End Time  :</label>&nbsp;
-        <input id="end_at" type="text" name="end_at" placeholder="HH:MM" required>
+        <label for="end_time">End Time  :</label>&nbsp;
+        <input id="end_time" type="text" name="end_time" placeholder="HH:MM" required>
  
       </div>
 
       <button type="submit">Add Schedule</button>
     </form>
+   <div><br></div>
+  
+    <form  method="POST" action="/schedules/delschedule" >
+      Enter UserId and Day to delete Schedule:<br>
+      <div>
+        <label for="user_id">User_Id: </label>&nbsp;&nbsp;&nbsp;&nbsp;
+        <input id="user_id" type="text" name="user_id" required>
+     </div>
+   <div>
+      <label for="Day">Day &nbsp;&nbsp;&nbsp;&nbsp;
+        :</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input id="day" type="text" name="day" required>
+      </div>
+
+    <div>
+   
+     <button type="submit">Delete Schedule</button>
+   </form>
+
+
   </main>
       
    <%- include('../partials/footer') %>

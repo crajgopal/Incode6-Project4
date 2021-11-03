@@ -30,9 +30,9 @@ app.use(express.urlencoded({extended:true}))//middleware to get req body.
 app.use(session({
 
     name:SESS_NAME,
-    resave:false,
-    saveUninitialised:false,
-    secret:SESS_SECRET,
+    resave:false,//// to resave session varialbe if nothing is changed 
+    saveUninitialised:false,////Do you save sesssion details if no value is in session ?
+    secret:SESS_SECRET, ////use env variable , it encrypts the info that we store in our session
     cookie:{
         maxAge: SESS_LIFETIME,
         sameSite:true,
@@ -40,6 +40,8 @@ app.use(session({
 
     }
 }))
+
+
 
 //Routes
 app.use('/', homeRouter)

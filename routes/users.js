@@ -9,12 +9,7 @@ const bcrypt = require('bcrypt')
 const session =require('express-session')
 const flash =require('express-flash')
 
-router.use(session({
-        secret:"secret", //use env variable , it encrypts the info that we store in our session
-        resave: false, // to resave session varialbe if nothing is changed 
-        saveUninitialised :false //Do you save sesssion details if no value is in session ?
 
-}))
 
 router.use(flash())
 

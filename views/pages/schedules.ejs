@@ -21,7 +21,7 @@
           <tbody>
             <% for (let i = 0; i < schedules.length; i++) { %>
               <tr> 
-                <td><a href ="/schedules/add" > <%= schedules[i].user_id %></a></td>
+                <td> <%= schedules[i].user_id %></td>
                 <td><%= users[(schedules[i].user_id -1)].firstname%></td>
                 <% for (let j = 1; j < days.length+1; j++) { %>
                   <% if((schedules[i].day)==j) {%>
@@ -35,7 +35,12 @@
             <% } %>
           </tbody>
         </table>
-  
+        <br><br>
+        <form  method="POST" action="/schedules/userinfo" >
+         Enter UserId to get user info:<br>
+        <input id="user_id" type="text" name="user_id" placeholder ="User Id" required>
+        <button type="submit">EmployeeInfo</button>
+      </form>
     </main>
           
      <%- include('../partials/footer') %>
