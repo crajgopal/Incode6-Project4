@@ -55,5 +55,7 @@ app.use('/schedules',schedulesRouter)
 
 const PORT = process.env.PORT||3000;
 
-app.listen(PORT, ()=>console.log(`Server started at ${PORT}`));
+app.listen(PORT, () => {
+    console.log(`App is listening at http://localhost:${PORT}`)
+})
 

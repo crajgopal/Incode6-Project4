@@ -8,19 +8,21 @@
   <body>
     <%- include('../partials/header') %>
     <main>
-      <table>
+      <table class="table table-striped">
           <thead>
             <tr>
-              <th>User ID</th>
-              <th>User</th>
-              <th>Day</th>
-              <th>Start Time</th>
+              <th scope="col"></th>
+              <th scope="col">User ID</th>
+              <th scope="col">User</th>
+              <th scope="col">Day</th>
+              <th scope="col">Start Time</th>
               <th>End Time</th>
             </tr>
           </thead>
           <tbody>
             <% for (let i = 0; i < schedules.length; i++) { %>
               <tr> 
+                <th scope="row"></th>
                 <td> <%= schedules[i].user_id %></td>
                 <td><%= users[(schedules[i].user_id -1)].firstname%></td>
                 <% for (let j = 1; j < days.length+1; j++) { %>
@@ -36,11 +38,18 @@
           </tbody>
         </table>
         <br><br>
+
+        <div class="container-fluid">
+        <div class="form-group" style="width: 340px;">
         <form  method="POST" action="/schedules/userinfo" >
          Enter UserId to get user info:<br>
-        <input id="user_id" type="text" name="user_id" placeholder ="User Id" required>
-        <button type="submit">EmployeeInfo</button>
+        <input id="user_id" type="text" name="user_id" placeholder ="User Id" class="form-control" required>
+        <div class="button">
+        <button class="btn btn-danger" type="submit">Employee Info</button>
+      </div>
       </form>
+    </div>
+  </div>
     </main>
           
      <%- include('../partials/footer') %>
