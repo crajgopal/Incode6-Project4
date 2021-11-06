@@ -39,19 +39,19 @@
 
    <h4 class="text-center">Schedule info for user :<%= firstname  %></h4>
 
-    <table class="table">
+    <table class="tab">
         <thead>
           <tr>
-            <th scope="col"></th>
-            <th scope="col">Day   </th>
-            <th scope="col">Start Time</th>
-            <th scope="col">End Time</th>
+            
+            <th>Day</th>
+            <th>Start Time</th>
+            <th>End Time</th>
           </tr>
         </thead>
         <tbody>
           <% for (let i = 0; i < schedules.length; i++) { %>
             <tr>
-              <th scope="row"></th>
+              
               <% for (let j = 1; j < days.length+1; j++) { %>
                <% if((schedules[i].day)==j) {%>
               <td><%= days[j-1] %></td>
