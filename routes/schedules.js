@@ -113,27 +113,6 @@ router.get('/', redirectLogin, (req, res)=>{
 
 
 
-  //Display form for adding new schedules 
-/*  router.get('/add',redirectLogin, (req, res) => {
-    db.any('SELECT * FROM users;' )
-    .then( (users)=>{
-
-      res.render('pages/newschedule',
-    {
-       length: users.length,
-       users
-    })
-  })
-    .catch((error) =>{
-
-      console.log(error)
-      res.redirect("/error?message ="+ error.message)
-    })
-    
-  
-    
-  })
-*/
 
 //get newschedule page 
 
@@ -252,27 +231,6 @@ router.post('/userinfo',redirectLogin, (req, res)=>{
   
   })
 
-//delete schedule
-/*
-router.get('/delschedule',redirectLogin,(req, res)=>{
-  const{user_id, day} = req.body
-
-  console.log("Deleted schedule for user "+user_id + "on"+day )
-  db.any("SELECT *, TO_CHAR(start_time,'HH12:MI AM')start_time ,TO_CHAR(end_time,'HH12:MI AM')end_time FROM schedules WHERE user_id =$1, day=$2",[user_id, day] )
-  .then((schedules)=>{
-
-    console.log(schedules)
-    res.redirect('/schedules/newschedule')
-
-  })
-  .catch((error)=>{
-    res.redirect("/error?message=" + error.message)
-
-  })
-
-})
-
-*/
 
 
 router.post('/delschedule',redirectLogin,(req, res)=>{
