@@ -60,7 +60,7 @@ router.post('/', (req, res)=>{
              //req.flash("success_msg", "You are now registered . Please login ")
              
              messages.push({message:"You are now registered . Please login "})
-             res.redirect('/',{messages})         
+             res.redirect('/')         
             })       
                  
             .catch((error)=>{

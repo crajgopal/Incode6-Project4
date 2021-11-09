@@ -22,7 +22,7 @@
             <% for (let i = 0; i < schedules.length; i++) { %>
               <tr> 
                 <td> <%= schedules[i].user_id %></td>
-                <td><%= users[(schedules[i].user_id -1)].firstname%></td>
+                <td><%= users[(schedules[i].user_id-1)].firstname%></td>
                 <% for (let j = 1; j < days.length+1; j++) { %>
                   <% if((schedules[i].day)==j) {%>
                 <td><%= days[j-1] %></td>

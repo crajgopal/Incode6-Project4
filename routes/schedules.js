@@ -238,6 +238,11 @@ router.post('/delschedule',redirectLogin,(req, res)=>{
 
 
   const message ="Deleted schedule for user with id "+ user_id +" for day "+day
+  const message1 = "You dont have persmission to delete others schedules"
+
+if(parseInt(user_id)==req.session.userId){
+  console.log(parseInt(user_id))
+  console.log(req.session.userId)
   
   db.any('DELETE FROM schedules WHERE user_id = $1 AND day = $2',[user_id,day])
   //db.any("SELECT *, TO_CHAR(start_time,'HH12:MI AM')start_time ,TO_CHAR(end_time,'HH12:MI AM')end_time FROM schedules WHERE user_id = $1 AND day = $2",[user_id,day])
@@ -252,7 +257,14 @@ router.post('/delschedule',redirectLogin,(req, res)=>{
     res.redirect("/error?message=" + error.message)
 
   })
+}
+else {
+  res.redirect('/schedules/newschedule')
+}  
+  
 
+
+  
 })
 
 
