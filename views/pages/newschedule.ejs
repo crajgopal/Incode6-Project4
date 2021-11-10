@@ -3,33 +3,31 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title> Schedule Management App</title>
-     <link rel="stylesheet " href ="/styles.css">
+     <link rel="stylesheet " href ="styles.css">
   </head>
   <body>
-    <%- include('../partials/header') %>
+    <%- include('../partials/header1') %>
     <main>
 
-
-
-      <div> 
-       <h4> ** You cant delete other's schedules **</h4>
- 
-          
-      </div>
-
-      <table>
+      
+           
+       
+      <table class="tab">
         <thead>
           <tr>
-            <th>User ID</th>
-            <th>User</th>
-            <th>Day</th>
-            <th>Start Time</th>
-            <th>End Time</th>
+            <th></th>
+            <th >User ID</th>
+            <th >User</th>
+            <th >Day</th>
+            <th >Start Time</th>
+            <th >End Time</th>
           </tr>
         </thead>
         <tbody>
           <% for (let i = 0; i < schedules.length; i++) { %>
-            <tr> 
+            <tr>
+              <th></th>
+
               <td> <%= schedules[i].user_id %></td>
               <td><%= users[(schedules[i].user_id -1)].firstname%></td>
               <% for (let j = 1; j < days.length+1; j++) { %>
@@ -44,58 +42,74 @@
           <% } %>
         </tbody>
       </table>
-      <br><br>
   
 
-
-
-
-    <form method="POST" action="/schedules/newschedule" >
-      <div>
-        <label for="user_id">User_Id: </label>&nbsp;&nbsp;&nbsp;&nbsp;
-        <input id="username" type="text" name="user_id" required>
-     </div>
-
-      <div>
-        <label for="Day">Day &nbsp;&nbsp;&nbsp;&nbsp;
-          :</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <input id="day" type="text" name="day" required>
-        </div>
-
-      <div>
-        <label for="start_time"> Start Time       :</label>
-        <input id="start_time" type="text" name="start_time" placeholder="HH:MM" required>
-         </div>
-
-      <div>
-        <label for="end_time">End Time  :</label>&nbsp;
-        <input id="end_time" type="text" name="end_time" placeholder="HH:MM" required>
- 
+      <!-- ******Add new Schedules********** -->
+      <div class="container">
+     <div class="contact-form shadow p-3 mb-5 bg-white rounded">
+      <div class="form-header text-center">
+          <h2 id="h2">Add new schedules</h2>
       </div>
+      <form method="POST" action="/schedules/newschedule">
+          <div class="row">
+              <div class="form-group" style="width: 340px;">
+                  <label for="user_id">User Id</label>
+                  <input type="text" id="username" name="user_id" placeholder="user id" class="form-control"
+                      required />
+              </div>
+            
+              <div class="form-group" style="width: 340px;">
+                <label for="day">Day</label>
+                <input type="text" id="day" name="day" placeholder="Day" class="form-control"
+                    required />
+            </div>
 
-      <button type="submit">Add Schedule</button>
+          <div class="form-group" style="width: 340px;">
+              <label for="start_time">Start Time:</label>
+              <input id="start_time" type="text" name="start_time" placeholder="HH:MM" class="form-control" required>
+          </div>
+          <div class="form-group" style="width: 340px;">
+              <label for="end_time">End Time:</label>
+              <input id="end_time" type="text" name="end_time" placeholder="HH:MM" class="form-control" required>
+          </div>
+          <div class="text-center form-group" id="btn">
+              <button class="btn btn-danger">Add New Schedules</button>
+          </div>
+      </div>
+      </form>
+  </div>
+
+     
+      <div class="delete-form shadow p-3 mb-5 bg-white rounded">
+        <h4> ** You cant delete other's schedules **</h4>
+        <div class="form-header text-center">
+          <h2 id="h2">Delete Schedule</h2>
+      </div>
+      <form  method="POST" action="/schedules/delschedule" >
+        <div class="row">
+          <div class="col-md-6">
+        <div class="form-group" style="width: 340px;">
+          <label for="user_id">User Id</label>
+          <input type="text" id="user_id" name="user_id" placeholder="user id" class="form-control"
+              required />
+      </div>
+    
+      <div class="form-group" style="width: 340px;">
+        <label for="day">Day</label>
+        <input type="text" id="day" name="day" placeholder="Day" class="form-control"
+            required />
+    </div>
+  </div>
+  <div class="text-center form-group" id="btn">
+    <button class="btn btn-danger">Delete Schedules</button>
+</div>
+</div>
     </form>
-   <div><br></div>
-    <form  method="POST" action="/schedules/delschedule" >
-      Enter UserId and Day to delete Schedule:<br>
-      <div>
-        <label for="user_id">User_Id: </label>&nbsp;&nbsp;&nbsp;&nbsp;
-        <input id="user_id" type="text" name="user_id" required>
-     </div>
-   <div>
-      <label for="Day">Day &nbsp;&nbsp;&nbsp;&nbsp;
-        :</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <input id="day" type="text" name="day" required>
-      </div>
+  </div>
 
-    <div>
-   
-     <button type="submit">Delete Schedule</button>
-   </form>
-
-
+</div>
   </main>
-      
+
    <%- include('../partials/footer') %>
 </body>
 

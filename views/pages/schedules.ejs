@@ -6,11 +6,12 @@
      <link rel="stylesheet " href ="styles.css">
   </head>
   <body>
-    <%- include('../partials/header') %>
+    <%- include('../partials/header1') %>
     <main>
-      <table>
+      <table class="tab">
           <thead>
             <tr>
+              
               <th>User ID</th>
               <th>User</th>
               <th>Day</th>
@@ -21,8 +22,9 @@
           <tbody>
             <% for (let i = 0; i < schedules.length; i++) { %>
               <tr> 
+                
                 <td> <%= schedules[i].user_id %></td>
-                <td><%= users[(schedules[i].user_id-1)].firstname%></td>
+                <td><%= users[(schedules[i].user_id -1)].firstname%></td>
                 <% for (let j = 1; j < days.length+1; j++) { %>
                   <% if((schedules[i].day)==j) {%>
                 <td><%= days[j-1] %></td>
@@ -36,11 +38,18 @@
           </tbody>
         </table>
         <br><br>
+
+        <div class="container">
+        <div class="form-group">
         <form  method="POST" action="/schedules/userinfo" >
          Enter UserId to get user info:<br>
-        <input id="user_id" type="text" name="user_id" placeholder ="User Id" required>
-        <button type="submit">EmployeeInfo</button>
+        <input id="user_id" type="text" name="user_id" placeholder ="User Id" class="form-control" required>
+        <div class="button">
+        <button class="btn btn-danger" type="submit">Employee Info</button>
+      </div>
       </form>
+    </div>
+  </div>
     </main>
           
      <%- include('../partials/footer') %>

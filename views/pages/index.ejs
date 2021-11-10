@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> <%= title %> </title>
+    <title> Schedule Management App </title>
     <link rel="stylesheet " href ="password.css">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
@@ -29,15 +29,23 @@
         </div>
  
     <main>
-     
-     
+        
           
+        
         <form  method="POST" action="/schedules" >
-          
+            
+
           <div class="row">
             <div class="col-md-6 mx-auto p-0">
+            
                 <div class="card">
                     <div class="login-box">
+                        <ul>
+                            <% if(typeof errors !='undefined') {  errors.forEach(error=>{ %>
+                               <li> <%= error.message %> </li>
+                              <% })} %>
+                              </ul>
+                          
                         <div class="login-snip"> <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Schedule Management App</label> <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab"></label>
                             <div class="login-space">
                                 <div class="login">

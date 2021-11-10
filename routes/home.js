@@ -113,7 +113,11 @@ transporter.sendMail(mailOptions, function(err, data){
 
 })
 .catch((error)=>{
-   res.redirect("/error?message=" + error.message)
+    let errors = []
+    errors.push({message:" Email is not registered .Fill details to register"})
+    res.render('pages/new-user', {errors})
+  
+    // res.redirect("/error?message=" + error.message)
 
 })
 
@@ -143,7 +147,9 @@ else {
     }
       })
 .catch((error)=>{
-   res.redirect("/error?message=" + error.message)
+  
+  
+     res.redirect("/error?message=" + error.message)
     //res.render('pages/forgot-password')
     
 })
@@ -209,10 +215,7 @@ else
         {  message, email})
 
 
-      //  res.statusCode = 302;
-        //return res.redirect('http://localhost:3000/'); 
-        // res.json("Password updated")
-
+    
 
 
     })

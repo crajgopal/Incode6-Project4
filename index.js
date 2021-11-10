@@ -6,6 +6,7 @@ const app = new express() //create instance of express app, init app
 const path =require('path');
 
 const session = require('express-session')
+const flash =require('express-flash')
 
 const homeRouter =require('./routes/home')
 const usersRouter = require('./routes/users')
@@ -40,6 +41,7 @@ app.use(session({
 
     }
 }))
+app.use(flash())
 
 
 

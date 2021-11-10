@@ -18,7 +18,7 @@ router.post('/', (req, res)=>{
     const {firstname , surname, email, password, password1} = req.body
     
     let errors = []
-    let messages =[]
+
    // if(!firstname || !surname || !email || !password || !password1)
    if(!req.body)
     {
@@ -41,9 +41,8 @@ router.post('/', (req, res)=>{
     else 
     {
 
-    
-        const salt = bcrypt.genSaltSync(10)
-        const hashedPassword =bcrypt.hashSync(password,salt)
+       const salt = bcrypt.genSaltSync(10)
+       const hashedPassword =bcrypt.hashSync(password,salt)
          db.any('SELECT * FROM users WHERE email =$1',[email])
         
         .then((users)=>{
@@ -57,10 +56,13 @@ router.post('/', (req, res)=>{
             //add user to db
             db.none('INSERT INTO users(firstname,surname,email, password) VALUES($1,$2,$3,$4);' ,[firstname,surname, email, hashedPassword])
             .then((users)=> {
-             //req.flash("success_msg", "You are now registered . Please login ")
-             
-             messages.push({message:"You are now registered . Please login "})
-             res.redirect('/')         
+          //  req.flash("success", "You are now registered . Please login ")
+
+
+          errors.push({message:"You are now registered . Please login "})
+            console.log(errors)
+
+             res.render('pages/index', {errors})         
             })       
                  
             .catch((error)=>{
